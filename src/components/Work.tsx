@@ -41,6 +41,10 @@ const Work = () => {
   });
 
   // Clean up (optional, good practice)
+  setTimeout(() => {
+    ScrollTrigger.refresh();
+  }, 500);
+
   return () => {
     timeline.kill();
     ScrollTrigger.getById("work")?.kill();
@@ -53,21 +57,28 @@ const Work = () => {
           My <span>Work</span>
         </h2>
         <div className="work-flex">
-          {[...Array(6)].map((_value, index) => (
+          {
+            [
+              { name: "Brand & Product Videos", category: "Pharma & Nutraceuticals", tools: "Premiere Pro, After Effects", image: "/images/work1.jpg" },
+              { name: "Podcast Series", category: "Health & Dietitians", tools: "Video Editing, Premiere Pro", image: "/images/work2.jpg" },
+              { name: "Social Media Content", category: "Instagram, LinkedIn, FB", tools: "Motion Graphics, Graphic Design", image: "/images/work3.jpg" },
+              { name: "Emergen Research", category: "Marketing Campaigns", tools: "SEO, Video Editing, After Effects", image: "/images/work4.jpg" },
+              { name: "3D Product Visualization", category: "Amazon & Flipkart Mockups", tools: "Blender, 3D Modelling", image: "/images/work5.jpg" }
+            ].map((project, index) => (
             <div className="work-box" key={index}>
               <div className="work-info">
                 <div className="work-title">
                   <h3>0{index + 1}</h3>
 
                   <div>
-                    <h4>Project Name</h4>
-                    <p>Category</p>
+                    <h4>{project.name}</h4>
+                    <p>{project.category}</p>
                   </div>
                 </div>
                 <h4>Tools and features</h4>
-                <p>Javascript, TypeScript, React, Threejs</p>
+                <p>{project.tools}</p>
               </div>
-              <WorkImage image="/images/placeholder.webp" alt="" />
+              <WorkImage image={project.image} alt={project.name} />
             </div>
           ))}
         </div>
