@@ -167,24 +167,21 @@ const TechStack = () => {
         <directionalLight position={[0, 5, -4]} intensity={2} />
         <Suspense fallback={null}>
           <Physics gravity={[0, 0, 0]}>
-            <Pointer isActive={isActive} />
+            <Pointer isActive={true} />
             {spheres.map((props, i) => (
               <SphereGeo
                 key={i}
                 {...props}
                 material={materials[Math.floor(Math.random() * materials.length)]}
-                isActive={isActive}
+                isActive={true}
               />
             ))}
           </Physics>
           <Environment
             files="/models/char_enviorment.hdr"
             environmentIntensity={0.5}
-            environmentRotation={[0, 4, 2]}
+            environmentRotation={[0, 4, 3]}
           />
-          <EffectComposer>
-            <N8AO aoRadius={3} intensity={1} color="black" />
-          </EffectComposer>
         </Suspense>
       </Canvas>
     </div>
